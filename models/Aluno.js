@@ -1,4 +1,5 @@
 const db = require('./db.js');
+const Turma = require('./Turma.js');
 
 const Aluno = db.sequelize.define('aluno', {
 
@@ -27,5 +28,7 @@ const Aluno = db.sequelize.define('aluno', {
 }, { freezeTableName: true });
 
 //Aluno.sync({ force: false });
+
+Aluno.belongsTo(Turma, { foreignKey: 'fk_turma', as: 'turma' });
 
 module.exports = Aluno;

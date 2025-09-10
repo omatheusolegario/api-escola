@@ -1,4 +1,5 @@
 const db = require('./db.js');
+const Disciplina = require('./Disciplina.js');
 
 const Professor = db.sequelize.define('professor', {
 
@@ -23,7 +24,9 @@ const Professor = db.sequelize.define('professor', {
 
 }, { freezeTableName: true });
 
-//Professor.sync({ force: false });
+//Professor.sync({ force: false});
+
+Professor.belongsTo(Disciplina, { foreignKey: 'fk_disciplina', as: 'disciplina' });
 
 module.exports = Professor;
 

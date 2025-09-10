@@ -1,4 +1,5 @@
 const db = require('./db.js');
+const Sala = require('./Sala.js');
 
 const Turma = db.sequelize.define('turma', {
 
@@ -29,6 +30,8 @@ const Turma = db.sequelize.define('turma', {
 }, { freezeTableName: true });
 
 //Turma.sync({ force: false });
+
+Turma.belongsTo(Sala, { foreignKey: 'fk_sala', as: 'sala' });
 
 module.exports = Turma;
 
