@@ -44,7 +44,7 @@ router.get('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     await Aluno.destroy({
         where: {
-            id_aluno: req.params.id,
+            cod_matricula: req.params.id,
         },
     });
     res.status(200).json({ message: 'Aluno excluído!' });
@@ -56,7 +56,7 @@ router.put('/:id', async (req, res) => {
     const { dataMatricula } = req.body;
     await Aluno.update(
         { nome, fk_turma, dataMatricula },
-        { where: { id_aluno: req.params.id }, }
+        { where: { cod_matricula: req.params.id }, }
     );
 
     res.status(200).json({ message: 'Aluno atualizado!' });

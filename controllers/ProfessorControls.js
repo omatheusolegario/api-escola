@@ -52,7 +52,7 @@ router.delete('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
     const { nome } = req.body;
     const { fk_disciplina } = req.body;
-    await professor.update(
+    await Professor.update(
         { nome, fk_disciplina },
         { where: { id_professor: req.params.id }, }
     );
